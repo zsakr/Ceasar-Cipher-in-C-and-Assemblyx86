@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#define N 1000
+#define N 20
 extern int cipher( int n);
 
 int main(){
@@ -11,8 +11,7 @@ int main(){
 	char exit[N];
 
 	printf("Enter a word: ");
-	for(i = 0; str[i] != '\n'; i++)
-		scanf("%s", str);
+		scanf("%[^\n]*c", str);
 
 	while(1){
 		printf("(1) Encrypt (2) Decrypt: \n");
@@ -22,15 +21,15 @@ int main(){
 		printf("Do another(Y/N)\n");
 		scanf("%s", exit);
 
-			 if(strcpy(exit,"Y") == 0){
+			 if(strcmp(exit,"Y") == 0){
 				continue;
 			}
-			else if(strcpy(exit,"N") == 0){
+			else if(strcmp(exit,"N") == 0){
 				break;
 			}
 
 	}
-printf("%d: ", cipher(shift));
+//printf("%d: ", cipher(shift));
 
 
 }
