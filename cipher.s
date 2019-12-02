@@ -3,6 +3,7 @@
 .global cipher
 .type cipher, %function
 
+
 cipher:
 
 			push		%ebp
@@ -10,24 +11,56 @@ cipher:
 			andl		$-16, %esp
 			subl		$32,	%esp
 
-			movl		12(%ebp), %esi				# Get word
-			movl		16(%ebp), %eax				# Get direction
-			movl		20(%ecx), %ecx				#	number of shifts
-
-			movl		$0x9E3779B9, %edx			# initalize the round constand amd keep in edx
-
-.loop:
+			movl		8(%ebp), %eax				# Get word
+			movl		12(%ebp), %edx				# Get direction
+			movl		16(%ebp), %ebx				# number of shifts
 
 
-			cmpl		$1, %eax
-			je			encrypt
+.condition:
+			cmpl		$'a', %eax
+			jl			.end
+			cmpl		$'z', %eax
+			jg			.end	
+			
+			cmpl		$1, %edx
+			je			.encrypt
+			cmpl		$2, %edx
+			
+			je			.encrypt
 
 .decrypt:
-			jmp 	end
+
+			subl		%ebx, %eax
+			cmpl		$'a', %eax
+			jl			.dec
+			jmp 		.end
+		
+			
 .encrypt:
+			addl		%ebx, %eax
+			cmpl		$'z', %eax
+			jg			.enc
+			
+			
+			jmp     	.end
+			
+			
+.dec:	
+			addl		$'z', %eax
+			subl		$'a', %eax
+			addl		$1,%eax
+			
+			jmp 		.end
+			
+.enc:
+
+	subl		$'z', %eax
+	addl		$'a', %eax
+	subl		$1,  %eax
+		
 
 
 .end:
-
+			movl %eax, 8(%ebp)
 			leave
 			ret
