@@ -26,7 +26,7 @@ string. Here’s a sample session:
     1
     Shift:
     2
-    uja ku c yjkb.
+    ujg ku c yjkb.
     Do another (Y/N)?
     N
 My main() function will be written in C. My program will use the following
