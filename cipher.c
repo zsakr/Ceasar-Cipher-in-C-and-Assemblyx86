@@ -24,45 +24,45 @@ int main(){
 
 	//Loop until it hit "N"
 	while(1) {
-		/*
-		* Ask user for input of the word
-		* and then convert all words to lower case using 
-		* tolower build in function
-		*/
-		i = 0;
-		size = 0;
-		printf("Enter a word: \n");
-		while((c = getchar()) != '\n'){
-			fun[i] = tolower(c);
-			i++;
-			size++;
+	/*
+	* Ask user for input of the word
+	* and then convert all words to lower case using 
+	* tolower build in function
+	*/
+	  i = 0;
+	 size = 0;
+	 printf("Enter a word: \n");
+	 while((c = getchar()) != '\n'){
+		fun[i] = tolower(c);
+		i++;
+		size++;
 		}
-				// Ask user to choose encrypt or decrypt
-				printf("(1) Encrypt (2) Decrypt: \n");
-				scanf("%d", &direcion);
-				//while loop to check if user enter different numbers
+			// Ask user to choose encrypt or decrypt
+			printf("(1) Encrypt (2) Decrypt: \n");
+			scanf("%d", &direcion);
+			//while loop to check if user enter different numbers
 			while(direcion != 1 || direcion != 2){
 			//encrypt
 				if(direcion == 1){
 					
-						printf("shift: ");
-						scanf("%d", &shift);
+					printf("shift: ");
+					scanf("%d", &shift);
 			
-						for(i = 0; i < size; i++)
-							fun[i] = cipher(fun[i], direcion, shift);
-						for(i = 0; i < size; i++)	
-							printf("%c", fun[i]);
+					for(i = 0; i < size; i++)
+						fun[i] = cipher(fun[i], direcion, shift);
+					for(i = 0; i < size; i++)	
+						printf("%c", fun[i]);
 					break;
 					}
 					//decrypt
 				if(direcion == 2){
-						printf("shift: ");
-						scanf("%d", &shift);
+					printf("shift: ");
+					scanf("%d", &shift);
 			
-						for(i = 0; i < size; i++)
-							fun[i] = cipher(fun[i], direcion, shift);
-						for(i = 0; i < size; i++)	
-							printf("%c", fun[i]);
+					for(i = 0; i < size; i++)
+						fun[i] = cipher(fun[i], direcion, shift);
+					for(i = 0; i < size; i++)	
+						printf("%c", fun[i]);
 					break;
 					}
 				/*
@@ -70,9 +70,9 @@ int main(){
 				*/
 				else{
 					
-						printf("Please Enter a valid input\n");
-						printf("(1) Encrypt (2) Decrypt: \n");
-						scanf("%d", &direcion);
+					printf("Please Enter a valid input\n");
+					printf("(1) Encrypt (2) Decrypt: \n");
+					scanf("%d", &direcion);
 					
 				}
 				
