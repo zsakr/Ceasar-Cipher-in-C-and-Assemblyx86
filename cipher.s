@@ -1,5 +1,9 @@
+#@author Ziad Sakr
+#@version 1.0 Dec 7th 2019
+
 .file			"cipher.s"
 
+#call function cipher from the C file
 .global cipher
 .type cipher, %function
 
@@ -21,35 +25,36 @@ cipher:
 			cmpl		$'z', %eax #z
 			jg			.end	
 			
-			cmpl		$1, %edx
-			je			.encrypt
-			cmpl		$2, %edx
-			je			.decrypt
+			cmpl		$1, %edx   #check if user enter 1
+			je			.encode # jumb encrypt 
+			cmpl		$2, %edx # if enter 2 
+			je			.decode # jumb to decrypt
 
 
-.decrypt:
+#decode funtion
+.decode:
 
-			subl		%ebx, %eax
+			subl		%ebx, %eax    
 			cmpl		$'a', %eax
-			jl			.dec
+			jl			.decrypt
 			jmp 		.end
 		
-			
-.encrypt:
+#encode funtion			
+.encode:
 			addl		%ebx, %eax
 			cmpl		$'z', %eax
-			jg			.enc
+			jg			.encrypt
 			jmp     	.end
 			
-			
-.dec:	
+#decrypt			
+.decrypt:	
 			addl		$'z', %eax
 			subl		$'a', %eax
 			addl		$1,   %eax
 			
 			jmp 		.end
-			
-.enc:
+#encrypt			
+.encrypt:
 
 	subl		$'z', %eax
 	addl		$'a', %eax
@@ -58,7 +63,7 @@ cipher:
 
 
 .end:
-			movl %eax, 12(%ebp)
+			movl %eax, 12(%ebp)    #store the word back to base pointer on the stack
 			
 			leave
 			ret
