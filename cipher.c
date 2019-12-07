@@ -15,7 +15,7 @@ int main(){
 	char fun[N];
    	int size = 0;
 
-	while(strcasecmp(exit, "N") != 0) {
+	while(1) {
 		i = 0;
 		size = 0;
 		printf("Enter a word: \n");
@@ -56,20 +56,21 @@ int main(){
 						printf("(1) Encrypt (2) Decrypt: \n");
 						scanf("%d", &direcion);
 					
-			}
+				}
 				
 			
 		}
-		
 		printf("\nDo another(Y/N)\n");
 		for(i = 0; i < 1; i++)
 			scanf("%s", exit);
-		c = getchar();
+			c = getchar();
+		while(strcasecmp(exit, "Y") != 0 || strcasecmp(exit, "N") != 0){
 		if(strcasecmp(exit, "Y") == 0){
-			continue;
+
+			break;
 		}
 		
-		else if(strcasecmp(exit, "N") == 0){
+		if(strcasecmp(exit, "N") == 0){
 			break;
 		
 		}
@@ -81,9 +82,10 @@ int main(){
 		
 		}
 	}
+	if(strcasecmp(exit, "N") == 0){
+			break;
+		
+		}
+	}
 }
-	 
-	 
-
-
-
+	
