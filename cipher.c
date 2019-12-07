@@ -8,7 +8,7 @@ extern char cipher(char c, int direcion, int shift);
 
 int main(){
 	int c;
-	int direcion = 0;
+	int direcion = 1;
 	int shift,i;
 	char str[N];
 	char exit[N];
@@ -16,9 +16,6 @@ int main(){
    	int size = 0;
 
 	while(strcasecmp(exit, "N") != 0) {
-		if(strcasecmp(exit, "N") == 0)
-			break;
-		else {
 		i = 0;
 		size = 0;
 		printf("Enter a word: \n");
@@ -27,11 +24,12 @@ int main(){
 			i++;
 			size++;
 		}
-			printf("(1) Encrypt (2) Decrypt: \n");
-			scanf("%d", &direcion);
-			
-			switch(direcion){
-				case 1:
+
+				printf("(1) Encrypt (2) Decrypt: \n");
+				scanf("%d", &direcion);
+			while(direcion != 1 || direcion != 2){
+				if(direcion == 1){
+					
 						printf("shift: ");
 						scanf("%d", &shift);
 			
@@ -40,7 +38,8 @@ int main(){
 						for(i = 0; i < size; i++)	
 							printf("%c", fun[i]);
 					break;
-				case 2:
+					}
+				if(direcion == 2){
 						printf("shift: ");
 						scanf("%d", &shift);
 			
@@ -49,28 +48,41 @@ int main(){
 						for(i = 0; i < size; i++)	
 							printf("%c", fun[i]);
 					break;
-				default:
+					}
+					
+				else{
 					
 						printf("Please Enter a valid input\n");
 						printf("(1) Encrypt (2) Decrypt: \n");
 						scanf("%d", &direcion);
-				}
+					
+			}
 				
 			
 		}
 		
-
 		printf("\nDo another(Y/N)\n");
 		for(i = 0; i < 1; i++)
 			scanf("%s", exit);
 		c = getchar();
+		if(strcasecmp(exit, "Y") == 0){
+			continue;
+		}
 		
-		 if(strcasecmp(exit, "N") == 0)
+		else if(strcasecmp(exit, "N") == 0){
 			break;
-		}
 		
 		}
-
+		else {
+			printf("\nPlease Try again\nDo another(Y/N)\n");
+			for(i = 0; i < 1; i++)
+					scanf("%s", exit);
+			c = getchar();
+		
+		}
+	}
+}
+	 
 	 
 
 
