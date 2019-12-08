@@ -1,5 +1,5 @@
-#@author Ziad Sakr
-#@version 1.0 Dec 7th 2019
+# @author Ziad Sakr
+# @version 1.0 Dec 7th 2019
 
 .file			"cipher.s"
 
